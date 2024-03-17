@@ -1,0 +1,104 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.79,
+        "y": 7.46
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 8.087123980241081,
+        "y": 7.50144080556284
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.72,
+        "y": 6.41
+      },
+      "prevControl": {
+        "x": 5.839485897320026,
+        "y": 6.8691855024949895
+      },
+      "nextControl": {
+        "x": 4.233856638734657,
+        "y": 6.2105959841373375
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.79,
+        "y": 5.91
+      },
+      "prevControl": {
+        "x": 5.891315535600193,
+        "y": 6.776081960714992
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1,
+      "rotationDegrees": -170.5685160195023,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.15,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeOut"
+              }
+            },
+            {
+              "type": "wait",
+              "data": {
+                "waitTime": 0.15
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeStop"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 169.65919060950557,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "F1M5M4",
+  "previewStartingState": {
+    "rotation": 179.3794760710764,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}
