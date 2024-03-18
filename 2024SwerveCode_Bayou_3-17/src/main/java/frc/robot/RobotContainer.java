@@ -9,6 +9,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
+import frc.robot.commands.climberCommands.climberLeft;
+import frc.robot.commands.climberCommands.climberRight;
+import frc.robot.commands.intakeCommands.intakeChain;
+import frc.robot.commands.intakeCommands.intakeIntake;
+import frc.robot.commands.shooterCommands.shooterActuator;
+import frc.robot.commands.shooterCommands.shooterShoot;
 import frc.robot.subsystems.*;
 
 public class RobotContainer {
@@ -18,7 +24,14 @@ public class RobotContainer {
   public final static Joystick driver = new Joystick(0);
   public final static Joystick copilot = new Joystick(1); 
   //call commands//
-
+  public static climberLeft climberLeft = new climberLeft();
+  public static climberRight climberRight = new climberRight();
+  public static intakeChain intakeChain = new intakeChain();
+  public static intakeIntake intakeIntake = new intakeIntake();
+  public static shooterActuator shooterActuator = new shooterActuator();
+  public static shooterShoot shooterShoot = new shooterShoot();
+  
+  public static commandRunner commandRunner = new commandRunner();
   //call subsystems//
   private final colorSensor s_ColorSensor = new colorSensor();
   private final shooterPigeon s_ShooterPigeon = new shooterPigeon();
