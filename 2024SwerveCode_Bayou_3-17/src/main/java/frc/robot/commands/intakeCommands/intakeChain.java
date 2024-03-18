@@ -22,7 +22,7 @@ public class intakeChain extends Command {
     /*Encoder Val */
     public static double encoderVal;
     /*Booleans */
-    boolean canManuallyMove = true;
+    public static boolean canManuallyMove = true;
      public intakeChain() {
      }
    

@@ -13,6 +13,7 @@ import frc.robot.commands.climberCommands.climberLeft;
 import frc.robot.commands.climberCommands.climberRight;
 import frc.robot.commands.intakeCommands.intakeChain;
 import frc.robot.commands.intakeCommands.intakeIntake;
+import frc.robot.commands.limelightCommands.canRunFileManager;
 import frc.robot.commands.shooterCommands.shooterActuator;
 import frc.robot.commands.shooterCommands.shooterShoot;
 import frc.robot.controls.controls;
@@ -34,6 +35,13 @@ public class RobotContainer {
   
   public static commandRunner commandRunner = new commandRunner();
   public static controls controls = new controls();
+  public static canRunFileManager canRunFileManager = new canRunFileManager();
+
+  //april tag commands//
+  public static frc.robot.commands.limelightCommands.limelightAutoCommands.amp amp = new frc.robot.commands.limelightCommands.limelightAutoCommands.amp();
+  public static frc.robot.commands.limelightCommands.limelightAutoCommands.speaker speaker = new frc.robot.commands.limelightCommands.limelightAutoCommands.speaker();
+  public static frc.robot.commands.limelightCommands.limelightAutoCommands.noneFound noneFound = new frc.robot.commands.limelightCommands.limelightAutoCommands.noneFound();
+
   //call subsystems//
   private final colorSensor s_ColorSensor = new colorSensor();
   private final shooterPigeon s_ShooterPigeon = new shooterPigeon();

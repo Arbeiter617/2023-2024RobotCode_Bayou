@@ -45,11 +45,11 @@ public class shooterActuator extends Command {
 
     }
 
-    public void runActuator(double speed) {
+    public static void runActuator(double speed) {
         Constants.wenchMotor.set(speed);
     }
 
-    public void stopActuator() {
+    public static void stopActuator() {
         Constants.wenchMotor.set(0);
     }
 }

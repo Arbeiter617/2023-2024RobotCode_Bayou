@@ -16,7 +16,7 @@ public class intakeIntake extends Command {
 
 
     /*Booleans */
-    boolean canManuallyIntake = true;
+    public static boolean canManuallyIntake = true;
      public intakeIntake() {
      }
    

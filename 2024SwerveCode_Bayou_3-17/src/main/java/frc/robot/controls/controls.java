@@ -21,6 +21,8 @@ public class controls extends Command {
         public static int intakeChainControlAxis = 5;
         public static int intakeButton = 5;
         public static int outakeButton = 6;
+        //limelight toggle//
+        public static int liemlightToggleButton;
 
      public controls() {
         

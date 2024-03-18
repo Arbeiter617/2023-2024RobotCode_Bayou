@@ -13,7 +13,7 @@ public class shooterShoot extends Command {
     public static double actualSpeed;
 
     /*Booleans */
-    boolean canManuallyShoot = true;
+    public static boolean canManuallyShoot = true;
      public shooterShoot() {
      }
    
@@ -39,12 +39,12 @@ public class shooterShoot extends Command {
 
     }
 
-    public void runShooter(double speed) {
+    public static void runShooter(double speed) {
         Constants.shooterLeft.set(speed);
         Constants.shooterRight.set(-speed);
     }
 
-    public void stopShooter() {
+    public static void stopShooter() {
         Constants.shooterLeft.set(0);
         Constants.shooterRight.set(0);
     }

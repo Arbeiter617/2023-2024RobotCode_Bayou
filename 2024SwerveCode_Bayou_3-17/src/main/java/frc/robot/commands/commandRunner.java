@@ -19,5 +19,6 @@ public class commandRunner extends Command {
         RobotContainer.intakeIntake.execute();
         RobotContainer.shooterActuator.execute();
         RobotContainer.shooterShoot.execute();
+        RobotContainer.canRunFileManager.execute();
     }
 }
