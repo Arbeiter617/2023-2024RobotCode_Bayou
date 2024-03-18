@@ -4,12 +4,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
+import frc.robot.controls.controls;
 
 public class shooterShoot extends Command {
-    /*Copilot Stuff*/
-    //specific controller control//
-    int shooterControlAxis = 2;
-
     /*Editable Values */
     double highestShooterSpeed = 1;
     double lowestShooterSpeed = 0;
@@ -25,10 +22,10 @@ public class shooterShoot extends Command {
    
      @Override
      public void execute() {
-        actualSpeed = RobotContainer.copilot.getRawAxis(shooterControlAxis);
+        actualSpeed = RobotContainer.copilot.getRawAxis(controls.shooterControlAxis);
         
         if(canManuallyShoot) {
-            if(RobotContainer.driver.getRawAxis(shooterControlAxis) > 0.0) {
+            if(RobotContainer.driver.getRawAxis(controls.shooterControlAxis) > 0.0) {
                 if(actualSpeed <= highestShooterSpeed && actualSpeed >= lowestShooterSpeed) {
                     runShooter(actualSpeed);
                     runShooter(actualSpeed);

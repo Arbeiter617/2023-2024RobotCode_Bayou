@@ -6,12 +6,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
+import frc.robot.controls.controls;
 
 public class intakeChain extends Command {
-    /*Copilot Stuff*/
-    //specific controller control//
-    int intakeChainControlAxis = 5;
-
     /*Editable Values */
     double intakeUpSpeed;
     double intakeDownSpeed;
@@ -36,14 +33,14 @@ public class intakeChain extends Command {
         encoderVal = Constants.intakeMotorUp.getEncoder().getPosition();
 
         if(canManuallyMove) {
-            if(RobotContainer.copilot.getRawAxis(intakeChainControlAxis) < 0.0 - offsetVal && encoderVal < highestIntakePoint) {
+            if(RobotContainer.copilot.getRawAxis(controls.intakeChainControlAxis) < 0.0 - offsetVal && encoderVal < highestIntakePoint) {
                 //go up//
                 if(encoderVal > -6) {
                     runIntake((upSpeed) / 2);
                 } else {
                     runIntake(upSpeed);
                 }
-            } else if(RobotContainer.copilot.getRawAxis(intakeChainControlAxis) > 0.0 + offsetVal && encoderVal > lowestIntakePoint) {
+            } else if(RobotContainer.copilot.getRawAxis(controls.intakeChainControlAxis) > 0.0 + offsetVal && encoderVal > lowestIntakePoint) {
                 //go down//
                 if(encoderVal < -8) {
                     runIntake((downSpeed) / 2);

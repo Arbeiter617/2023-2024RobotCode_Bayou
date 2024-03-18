@@ -3,6 +3,7 @@ package frc.robot.commands.shooterCommands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
+import frc.robot.controls.controls;
 import frc.robot.subsystems.shooterPigeon;
 
 
@@ -10,10 +11,6 @@ public class shooterActuator extends Command {
     /*Calling Subsystems */
     shooterPigeon s_shooterPigeon;
     private shooterPigeon s_ShooterPigeon;
-
-    /*Copilot Stuff*/
-    //specific controller control//
-    int shooterActuatorAxis = 1;
 
     //Offsets//
     double offsetVal;
@@ -34,10 +31,10 @@ public class shooterActuator extends Command {
      @Override
      public void execute() {
         if(canManuallyMove) {
-            if(RobotContainer.copilot.getRawAxis(shooterActuatorAxis) < 0.0 - offsetVal && shooterPigeon.roll < highestShooterPoint) {
+            if(RobotContainer.copilot.getRawAxis(controls.shooterActuatorAxis) < 0.0 - offsetVal && shooterPigeon.roll < highestShooterPoint) {
                 //go up//
                 runActuator(-actuatorSpeed);
-            } else if(RobotContainer.copilot.getRawAxis(shooterActuatorAxis) > 0.0 + offsetVal && shooterPigeon.roll > lowestShooterPoint) {
+            } else if(RobotContainer.copilot.getRawAxis(controls.shooterActuatorAxis) > 0.0 + offsetVal && shooterPigeon.roll > lowestShooterPoint) {
                 //go down//
                 runActuator(actuatorSpeed);
             } else {
