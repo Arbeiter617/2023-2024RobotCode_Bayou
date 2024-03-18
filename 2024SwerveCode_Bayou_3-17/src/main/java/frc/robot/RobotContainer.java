@@ -15,6 +15,7 @@ import frc.robot.commands.intakeCommands.intakeChain;
 import frc.robot.commands.intakeCommands.intakeIntake;
 import frc.robot.commands.shooterCommands.shooterActuator;
 import frc.robot.commands.shooterCommands.shooterShoot;
+import frc.robot.controls.controls;
 import frc.robot.subsystems.*;
 
 public class RobotContainer {
@@ -32,6 +33,7 @@ public class RobotContainer {
   public static shooterShoot shooterShoot = new shooterShoot();
   
   public static commandRunner commandRunner = new commandRunner();
+  public static controls controls = new controls();
   //call subsystems//
   private final colorSensor s_ColorSensor = new colorSensor();
   private final shooterPigeon s_ShooterPigeon = new shooterPigeon();

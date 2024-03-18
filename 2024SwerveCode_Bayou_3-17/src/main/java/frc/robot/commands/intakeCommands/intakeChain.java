@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
+import frc.robot.commands.sensorCommands.colorSensorRun;
 import frc.robot.controls.controls;
 
 public class intakeChain extends Command {
@@ -33,23 +34,47 @@ public class intakeChain extends Command {
         encoderVal = Constants.intakeMotorUp.getEncoder().getPosition();
 
         if(canManuallyMove) {
-            if(RobotContainer.copilot.getRawAxis(controls.intakeChainControlAxis) < 0.0 - offsetVal && encoderVal < highestIntakePoint) {
-                //go up//
-                if(encoderVal > -6) {
-                    runIntake((upSpeed) / 2);
+            if(!colorSensorRun.pieceIsFound) {
+                //doesnt have a piece//
+                if(RobotContainer.copilot.getRawAxis(controls.intakeChainControlAxis) < 0.0 - offsetVal && encoderVal < highestIntakePoint) {
+                    //go up//
+                    if(encoderVal > -6) {
+                        runIntake((upSpeed) / 2);
+                    } else {
+                        runIntake(upSpeed);
+                    }
+                } else if(RobotContainer.copilot.getRawAxis(controls.intakeChainControlAxis) > 0.0 + offsetVal && encoderVal > lowestIntakePoint) {
+                    //go down//
+                    if(encoderVal < -8) {
+                        runIntake((downSpeed) / 2);
+                    } else {
+                        runIntake(downSpeed);
+                    }
                 } else {
-                    runIntake(upSpeed);
-                }
-            } else if(RobotContainer.copilot.getRawAxis(controls.intakeChainControlAxis) > 0.0 + offsetVal && encoderVal > lowestIntakePoint) {
-                //go down//
-                if(encoderVal < -8) {
-                    runIntake((downSpeed) / 2);
-                } else {
-                    runIntake(downSpeed);
-                }
+                    //stop//
+                    stopIntake();
+                }   
             } else {
-                //stop//
-                stopIntake();
+                //has a piece//
+                if(RobotContainer.copilot.getRawAxis(controls.intakeChainControlAxis) > 0.0 + offsetVal && encoderVal > lowestIntakePoint) {
+                    //go down//
+                    if(encoderVal < -8) {
+                        runIntake((downSpeed) / 2);
+                    } else {
+                        runIntake(downSpeed);
+                    }
+                } else {
+                    if(encoderVal < highestIntakePoint) {
+                        //go up automatically//
+                        if(encoderVal > -6) {
+                            runIntake((upSpeed) / 2);
+                        } else {
+                            runIntake(upSpeed);
+                        }
+                    } else {
+                        stopIntake();
+                    }
+                }
             }
         }
     }
