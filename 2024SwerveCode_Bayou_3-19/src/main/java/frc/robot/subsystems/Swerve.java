@@ -30,6 +30,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Swerve extends SubsystemBase {
     public SwerveDriveOdometry swerveOdometry;
+    public SwerveDriveOdometry swerveOdometryAuto;
     public SwerveModule[] mSwerveMods;
     public SwerveModule[] mSwerveModsWithoutRotation;
     public Pigeon2 gyro;
@@ -68,9 +69,10 @@ public class Swerve extends SubsystemBase {
         ///////////////////
 
         swerveOdometry = new SwerveDriveOdometry(Constants.Swerve.swerveKinematics, getGyroYaw(), getModulePositions());
+        swerveOdometryAuto = new SwerveDriveOdometry(Constants.Swerve.swerveKinematics, getGyroYaw(), getModulePositionsAuto());
 
         AutoBuilder.configureHolonomic(
-            this::getPose, // Robot pose supplier
+            this::getPoseAuto, // Robot pose supplier
             this::setPoseAuto, // Method to reset odometry (will be called if your auto has a starting pose)
             this::getRobotRelativeSpeedsAuto, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
             this::driveRobotRelativeAuto, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
@@ -198,6 +200,11 @@ public class Swerve extends SubsystemBase {
 
     public Pose2d getPose() {
         return swerveOdometry.getPoseMeters();
+    }
+
+    //for auto//
+    public Pose2d getPoseAuto() {
+        return swerveOdometryAuto.getPoseMeters();
     }
 
     public void setPose(Pose2d pose) {
