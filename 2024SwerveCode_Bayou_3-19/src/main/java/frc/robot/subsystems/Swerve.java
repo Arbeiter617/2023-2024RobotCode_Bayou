@@ -71,9 +71,9 @@ public class Swerve extends SubsystemBase {
 
         AutoBuilder.configureHolonomic(
             this::getPose, // Robot pose supplier
-            this::setPose, // Method to reset odometry (will be called if your auto has a starting pose)
-            this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
-            this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
+            this::setPoseAuto, // Method to reset odometry (will be called if your auto has a starting pose)
+            this::getRobotRelativeSpeedsAuto, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
+            this::driveRobotRelativeAuto, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
             new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
                     new PIDConstants(0, 0.0, 0.0), // Translation PID constants
                     new PIDConstants(0.0, 0.0, 0.0), // Rotation PID constants
@@ -129,9 +129,28 @@ public class Swerve extends SubsystemBase {
         }
     }
 
+    //auto//
+    public void driveRobotRelativeAuto(ChassisSpeeds chassisSpeeds) {
+        SwerveModuleState[] swerveModuleStates =
+            Constants.Swerve.swerveKinematics.toSwerveModuleStates(
+                chassisSpeeds
+                                );
+        SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, Constants.Swerve.maxSpeed);
+
+        for(SwerveModule mod : mSwerveModsWithoutRotation){
+            mod.setDesiredState(swerveModuleStates[mod.moduleNumber], false);
+        }
+    }
+
     public ChassisSpeeds getRobotRelativeSpeeds() {
         SwerveDriveKinematics swerveKinematics = Constants.Swerve.swerveKinematics;
         return swerveKinematics.toChassisSpeeds(getModuleStates());
+    }
+
+    //auto//
+    public ChassisSpeeds getRobotRelativeSpeedsAuto() {
+        SwerveDriveKinematics swerveKinematics = Constants.Swerve.swerveKinematics;
+        return swerveKinematics.toChassisSpeeds(getModuleStatesAuto());
     }
 
     /* Used by SwerveControllerCommand in Auto */
@@ -151,9 +170,27 @@ public class Swerve extends SubsystemBase {
         return states;
     }
 
+    //auto//
+    public SwerveModuleState[] getModuleStatesAuto(){
+        SwerveModuleState[] states = new SwerveModuleState[4];
+        for(SwerveModule mod : mSwerveModsWithoutRotation){
+            states[mod.moduleNumber] = mod.getState();
+        }
+        return states;
+    }
+
     public SwerveModulePosition[] getModulePositions(){
         SwerveModulePosition[] positions = new SwerveModulePosition[4];
         for(SwerveModule mod : mSwerveMods){
+            positions[mod.moduleNumber] = mod.getPosition();
+        }
+        return positions;
+    }
+
+    //for auto//
+    public SwerveModulePosition[] getModulePositionsAuto(){
+        SwerveModulePosition[] positions = new SwerveModulePosition[4];
+        for(SwerveModule mod : mSwerveModsWithoutRotation){
             positions[mod.moduleNumber] = mod.getPosition();
         }
         return positions;
@@ -165,6 +202,10 @@ public class Swerve extends SubsystemBase {
 
     public void setPose(Pose2d pose) {
         swerveOdometry.resetPosition(getGyroYaw(), getModulePositions(), pose);
+    }
+    //for auto//
+    public void setPoseAuto(Pose2d pose) {
+        swerveOdometry.resetPosition(getGyroYaw(), getModulePositionsAuto(), pose);
     }
 
     public Rotation2d getHeading(){
