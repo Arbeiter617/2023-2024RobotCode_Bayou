@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
+import frc.robot.commands.artificialLearningTools.accuracyLogger;
 import frc.robot.commands.climberCommands.climberLeft;
 import frc.robot.commands.climberCommands.climberRight;
 import frc.robot.commands.intakeCommands.intakeChain;
@@ -36,6 +37,7 @@ public class RobotContainer {
   public static commandRunner commandRunner = new commandRunner();
   public static controls controls = new controls();
   public static canRunFileManager canRunFileManager = new canRunFileManager();
+  public static accuracyLogger accuracyLogger = new accuracyLogger();
 
   //april tag commands//
   public static frc.robot.commands.limelightCommands.limelightAutoCommands.amp amp = new frc.robot.commands.limelightCommands.limelightAutoCommands.amp();

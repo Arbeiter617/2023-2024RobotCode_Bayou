@@ -21,7 +21,7 @@ public class readAprilTags extends Command {
 
         //check tags//
         if(toggleLimelight.toggleLimelightPos) {
-            NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(0);
+            limelightReadingTool.table.getEntry("ledMode").setNumber(0);
             if(isAmp) {
                 RobotContainer.drivepls = true;
                 RobotContainer.amp.execute();
@@ -33,7 +33,7 @@ public class readAprilTags extends Command {
             }
         } else {
             RobotContainer.drivepls = false;
-            NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+            limelightReadingTool.table.getEntry("ledMode").setNumber(1);
         }
 
     }

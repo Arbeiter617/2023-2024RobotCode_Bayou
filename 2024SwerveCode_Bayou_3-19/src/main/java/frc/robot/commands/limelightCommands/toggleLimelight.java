@@ -24,6 +24,7 @@ public class toggleLimelight extends Command {
             if (togglePos && RobotContainer.copilot.getRawButton(controls.liemlightToggleButton)) { 
             togglePos = false;  
               if (toggleLimelightPos) { 
+                reset();
                toggleLimelightPos = false;
             } else {
               toggleLimelightPos = true;
@@ -31,5 +32,11 @@ public class toggleLimelight extends Command {
             } else if(RobotContainer.copilot.getRawButton(controls.liemlightToggleButton) == false) { 
                togglePos = true; 
            }  
+    }
+
+    void reset() {
+      readAprilTags.isSpeaker = false;
+      readAprilTags.isStage = false;
+      readAprilTags.isAmp = false;
     }
 }

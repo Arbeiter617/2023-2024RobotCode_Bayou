@@ -6,18 +6,14 @@ package frc.robot;
 
 import com.revrobotics.RelativeEncoder;
 
-import edu.wpi.first.wpilibj.AddressableLED;
-import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
-import edu.wpi.first.wpilibj.PS5Controller;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.lib.config.CTREConfigs;
-
+import frc.robot.commands.artificialLearningTools.accuracyLogger;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -30,7 +26,6 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
   Thread m_visionThread;
-
 
   //encoders//
    public static RelativeEncoder intakeUpEncoder;
@@ -74,6 +69,8 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledInit() {
     RobotContainer.driver.setRumble(RumbleType.kBothRumble, 0);
+    //log how many misses//
+    System.out.println(accuracyLogger.timesTooHigh + " times missed too high. " + accuracyLogger.timesTooLow + " times missed too low.");
   }
 
   @Override

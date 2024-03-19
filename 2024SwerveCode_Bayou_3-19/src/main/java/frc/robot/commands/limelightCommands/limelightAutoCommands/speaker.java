@@ -1,16 +1,13 @@
 package frc.robot.commands.limelightCommands.limelightAutoCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
 import frc.robot.commands.limelightCommands.limelightReadingTool;
-import frc.robot.commands.limelightCommands.readAprilTags;
-import frc.robot.commands.limelightCommands.toggleLimelight;
 import frc.robot.commands.shooterCommands.shooterActuator;
 import frc.robot.commands.shooterCommands.shooterShoot;
 
 public class speaker extends Command {
     //specific values on axis//
-    double centerYValue = -22;
+    public static double centerYValue = -22;
     
     //offsets//
     double yOffset = 2;

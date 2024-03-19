@@ -139,6 +139,47 @@ public final class Constants {
       public static final SwerveModuleConstants constants =
           new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
     }
+
+    /*MODULES FOR AUTO */
+    /* Front Left Module - Module 0 */
+    public static final class Mod0Au {
+      public static final int driveMotorID = 13;
+      public static final int angleMotorID = 0;
+      public static final int canCoderID = 15;
+      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(-101.55);
+      public static final SwerveModuleConstants constants =
+          new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+    }
+
+    /* Front Right Module - Module 1 */
+    public static final class Mod1Au {
+      public static final int driveMotorID = 16;
+      public static final int angleMotorID = 0;
+      public static final int canCoderID = 18;
+      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(22.675);
+      public static final SwerveModuleConstants constants =
+          new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+    }
+
+    /* Back Left Module - Module 2 */
+    public static final class Mod2Au {
+      public static final int driveMotorID = 10;
+      public static final int angleMotorID = 0;
+      public static final int canCoderID = 12;
+      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(78.31);
+      public static final SwerveModuleConstants constants =
+          new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+    }
+
+    /* Back Right Module - Module 3 */
+    public static final class Mod3Au {
+      public static final int driveMotorID = 19;
+      public static final int angleMotorID = 0;
+      public static final int canCoderID = 21;
+      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(113.73);
+      public static final SwerveModuleConstants constants =
+          new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+    }
   }
 
   public static final class AutoConstants {

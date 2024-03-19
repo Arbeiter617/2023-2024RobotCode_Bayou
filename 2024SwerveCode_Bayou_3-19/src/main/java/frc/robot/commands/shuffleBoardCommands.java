@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.artificialLearningTools.accuracyLogger;
 import frc.robot.commands.climberCommands.climberLeft;
 import frc.robot.commands.climberCommands.climberRight;
 import frc.robot.commands.intakeCommands.intakeChain;
@@ -38,6 +39,7 @@ public class shuffleBoardCommands extends Command {
         SmartDashboard.putBoolean("Is Speaker: ", readAprilTags.isSpeaker);
         SmartDashboard.putBoolean("Is Amp: ", readAprilTags.isAmp);
         SmartDashboard.putBoolean("Toggle Limelight: ", toggleLimelight.toggleLimelightPos);
+        SmartDashboard.putBoolean("Has pressed?: ", accuracyLogger.hasPressed);
         
     }
 }

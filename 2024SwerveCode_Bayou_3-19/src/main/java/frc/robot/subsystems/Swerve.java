@@ -31,6 +31,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Swerve extends SubsystemBase {
     public SwerveDriveOdometry swerveOdometry;
     public SwerveModule[] mSwerveMods;
+    public SwerveModule[] mSwerveModsWithoutRotation;
     public Pigeon2 gyro;
 
     public static double pitch;
@@ -56,6 +57,15 @@ public class Swerve extends SubsystemBase {
             new SwerveModule(2, Constants.Swerve.Mod2.constants),
             new SwerveModule(3, Constants.Swerve.Mod3.constants)
         };
+
+        //modules for auto//
+        mSwerveModsWithoutRotation = new SwerveModule[] {
+            new SwerveModule(0, Constants.Swerve.Mod0Au.constants),
+            new SwerveModule(1, Constants.Swerve.Mod1Au.constants),
+            new SwerveModule(2, Constants.Swerve.Mod2Au.constants),
+            new SwerveModule(3, Constants.Swerve.Mod3Au.constants)
+        };
+        ///////////////////
 
         swerveOdometry = new SwerveDriveOdometry(Constants.Swerve.swerveKinematics, getGyroYaw(), getModulePositions());
 
@@ -128,7 +138,7 @@ public class Swerve extends SubsystemBase {
     public void setModuleStates(SwerveModuleState[] desiredStates) {
         SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates, Constants.Swerve.maxSpeed);
         
-        for(SwerveModule mod : mSwerveMods){
+        for(SwerveModule mod : mSwerveModsWithoutRotation){
             mod.setDesiredState(desiredStates[mod.moduleNumber], false);
         }
     }

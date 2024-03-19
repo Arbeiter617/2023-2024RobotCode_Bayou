@@ -13,6 +13,7 @@ public class limelightReadingTool extends Command {
     public static double xValue;
     public static double yValue;
     public static double areaValue;
+    public static NetworkTable table;
      public limelightReadingTool() {
      }
    
@@ -21,7 +22,7 @@ public class limelightReadingTool extends Command {
    
      @Override
      public void execute() {
-        NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+        table = NetworkTableInstance.getDefault().getTable("limelight");
         NetworkTableEntry tx = table.getEntry("tx");
         NetworkTableEntry ty = table.getEntry("ty");
         NetworkTableEntry ta = table.getEntry("ta");
