@@ -1,0 +1,70 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 16.040813839347393,
+        "y": 7.312318662642077
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 13.870185337689392,
+        "y": 7.240307290549158
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.7434741285565,
+        "y": 7.427458664435215
+      },
+      "prevControl": {
+        "x": 10.492321736527405,
+        "y": 7.55090673088022
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeIn"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 6.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.7252242990547174,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "chaosAuto",
+  "previewStartingState": {
+    "rotation": 1.1457628381751943,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}
