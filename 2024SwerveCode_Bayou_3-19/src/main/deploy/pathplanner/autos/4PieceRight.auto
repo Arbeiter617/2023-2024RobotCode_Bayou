@@ -1,0 +1,153 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.305971901043328,
+      "y": 6.24451220466422
+    },
+    "rotation": -152.65012421993015
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "shooterOn"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.1
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeOut"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeDown"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "4PieceRight1"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeStop"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeUp"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeOut"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeDown"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeIn"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Copy of 4PieceRight1"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeStop"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeUp"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeOut"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeDown"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeIn"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Copy of Copy of 4PieceRight1"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeStop"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeUp"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeOut"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
