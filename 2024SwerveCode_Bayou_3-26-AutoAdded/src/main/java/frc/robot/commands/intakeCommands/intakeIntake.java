@@ -46,7 +46,7 @@ public class intakeIntake extends Command {
                     //has a piece//
                     if(RobotContainer.copilot.getRawButton(controls.intakeButton)) {
                         //intake in//
-                        runIntakeSpeed(highestIntakeSpeed/2);
+                        runIntakeSpeed(highestIntakeSpeed/4);
                     } else if(RobotContainer.copilot.getRawAxis(controls.outakeAxis) > 0.10) {
                         //intake out//
                         runIntakeSpeed(highestOutakeSpeed);

@@ -19,7 +19,7 @@ public class automatedIntake extends Command {
    
      @Override
      public void execute() {
-        if(RobotContainer.copilot.getRawButton(controls.automatedIntakeButton)) {
+        if(RobotContainer.copilot.getRawButton(controls.automatedIntakeButton) && !colorSensorRun.pieceIsFound) {
             //is holding button//
             automatedIntake = true;
             intakeDownCommand();
