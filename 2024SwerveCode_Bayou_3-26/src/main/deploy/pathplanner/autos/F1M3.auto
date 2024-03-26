@@ -1,0 +1,31 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.955958603646531,
+      "y": 4.526429102983519
+    },
+    "rotation": 120.83944674162794
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "F1M3P1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "F1M3P2"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
