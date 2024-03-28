@@ -32,5 +32,7 @@ public class commandRunner extends Command {
         RobotContainer.ampControl.execute();
         RobotContainer.climberLeft.execute();
         RobotContainer.climberRight.execute();
+        RobotContainer.automatedIntake.execute();
+        RobotContainer.automatedShooting.execute();
     }
 }

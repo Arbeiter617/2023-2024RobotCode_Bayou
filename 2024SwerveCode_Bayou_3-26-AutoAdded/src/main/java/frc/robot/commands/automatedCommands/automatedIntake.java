@@ -35,7 +35,7 @@ public class automatedIntake extends Command {
       
     }
 
-    void intakeDownCommand() {
+    public static void intakeDownCommand() {
         if(intakeChain.encoderVal > intakeChain.lowestIntakePoint) {
                 if(intakeChain.encoderVal < -6) {
                     intakeChain.runIntake((intakeChain.downSpeed) / 4);
@@ -47,7 +47,7 @@ public class automatedIntake extends Command {
             }
     }
 
-    void intakeUpCommand() {
+    public static void intakeUpCommand() {
         if(intakeChain.encoderVal < intakeChain.highestIntakePoint) {
             if(intakeChain.encoderVal > -10) {
                 intakeChain.runIntake((intakeChain.upSpeed) / 2);

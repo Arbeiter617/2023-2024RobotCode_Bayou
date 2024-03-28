@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.lib.config.CTREConfigs;
+import frc.robot.autoCommands.seekingPieces;
 import frc.robot.commands.artificialLearningTools.accuracyLogger;
 import frc.robot.controls.controls;
 
@@ -104,6 +105,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    seekingPieces.isAutoMove = false;
     RobotContainer.accuracyLogger.initialize();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();

@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.autoCommands.seekingPieces;
+import frc.robot.autoCommands.speakerFinder;
 import frc.robot.subsystems.Swerve;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
@@ -86,19 +87,35 @@ public class TeleopSwerve extends Command {
         !robotCentricSup.getAsBoolean(),
         true);
     }else {
-      s_Swerve.drive(
-        new Translation2d(translationVal, strafeVal).times(Constants.Swerve.maxSpeed / 1.5),
-        -rotationVal * Constants.Swerve.maxAngularVelocity,
-        !robotCentricSup.getAsBoolean(),
-        true);
+      if(!seekingPieces.isAutoMove) {
+        s_Swerve.drive(
+          new Translation2d(translationVal, strafeVal).times(Constants.Swerve.maxSpeed / 1.5),
+          -rotationVal * Constants.Swerve.maxAngularVelocity,
+          !robotCentricSup.getAsBoolean(),
+          true);
+      }
   }
     }
 
     public static void calledDuringAutotest() {
+      //System.out.println("Should move");
       s_Swerve.drive(
         new Translation2d(seekingPieces.transDouble, seekingPieces.strafeDouble).times(Constants.Swerve.maxSpeed / 1.5),
-        -seekingPieces.rotationDouble * Constants.Swerve.maxAngularVelocity,
+        -seekingPieces.rotationDouble / 2 * Constants.Swerve.maxAngularVelocity,
         !robotCentricSup.getAsBoolean(),
         true);
+    }
+
+    public static void calledDuringAutotest2() {
+      //System.out.println("Should move2");
+      s_Swerve.drive(
+        new Translation2d(speakerFinder.transDouble, speakerFinder.strafeDouble).times(Constants.Swerve.maxSpeed / 1.5),
+        -speakerFinder.rotationDouble / 2 * Constants.Swerve.maxAngularVelocity,
+        !robotCentricSup.getAsBoolean(),
+        true);
+    }
+
+    public static void zeroAutoGyro() {
+      s_Swerve.zeroGyro();
     }
 }

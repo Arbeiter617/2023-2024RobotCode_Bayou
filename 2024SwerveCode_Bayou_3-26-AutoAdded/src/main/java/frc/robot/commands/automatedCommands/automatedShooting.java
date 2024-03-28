@@ -10,8 +10,13 @@ import frc.robot.controls.controls;
 
 public class automatedShooting extends Command {
     public static boolean automatedShooting = false;
-    double shooterSpeed;
-    double outakeSpeed;
+    double shooterSpeed = 1;
+    double outakeSpeed = .8;
+
+    double systemTime;
+    boolean timeIsSet = false;
+
+    int timeOffset = 500;
      public automatedShooting() {
      }
    
@@ -22,15 +27,21 @@ public class automatedShooting extends Command {
      public void execute() {
         if(RobotContainer.copilot.getRawButton(controls.automatedShootingButton)) {
             //is holding button//
+            timeIsSet = false;
             automatedShooting = true;
             shooterShoot.runShooter(shooterSpeed);
         } else {
             if(automatedShooting) {
                 //had button held//
                 if(!colorSensorRun.pieceIsFound) {
-                    shooterShoot.stopShooter();
+                    timeSetter();
+                   if(System.currentTimeMillis() > systemTime + 500) {
+                     shooterShoot.stopShooter();
                     intakeIntake.stopintakeSpeed();
                     automatedShooting = false;
+                   } else {
+                    intakeIntake.runIntakeSpeed(outakeSpeed * -1);
+                   }
                 } else {
                     //run outake//
                     intakeIntake.runIntakeSpeed(outakeSpeed * -1);
@@ -39,6 +50,13 @@ public class automatedShooting extends Command {
             }
         }
       
+    }
+
+    void timeSetter() {
+        if(!timeIsSet) {
+            systemTime = System.currentTimeMillis();
+            timeIsSet = true;
+        }
     }
 
 }

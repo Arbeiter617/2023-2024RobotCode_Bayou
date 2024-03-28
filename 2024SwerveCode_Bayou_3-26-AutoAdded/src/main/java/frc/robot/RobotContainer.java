@@ -12,9 +12,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autoCommands.autoCommandsToRun;
+import frc.robot.autoCommands.seekingPieces;
+import frc.robot.autoCommands.speakerFinder;
 import frc.robot.commands.*;
 import frc.robot.commands.ampBarCommands.ampAssistControl;
 import frc.robot.commands.artificialLearningTools.accuracyLogger;
+import frc.robot.commands.automatedCommands.automatedIntake;
+import frc.robot.commands.automatedCommands.automatedShooting;
 import frc.robot.commands.climberCommands.climberLeft;
 import frc.robot.commands.climberCommands.climberRight;
 import frc.robot.commands.intakeCommands.intakeChain;
@@ -25,6 +29,7 @@ import frc.robot.commands.limelightCommands.pieceDetectionStuff;
 import frc.robot.commands.limelightCommands.readAprilTags;
 import frc.robot.commands.limelightCommands.toggleLimelight;
 import frc.robot.commands.limelightCommands.limelightAutoCommands.amp;
+import frc.robot.commands.limelightCommands.limelightAutoCommands.speaker;
 import frc.robot.commands.sensorCommands.colorSensorRun;
 import frc.robot.commands.shooterCommands.shooterActuator;
 import frc.robot.commands.shooterCommands.shooterShoot;
@@ -38,6 +43,7 @@ public class RobotContainer {
   /* Controllers */
   public final static Joystick driver = new Joystick(0);
   public final static Joystick copilot = new Joystick(1); 
+  
   //call commands//
   public static climberLeft climberLeft = new climberLeft();
   public static climberRight climberRight = new climberRight();
@@ -55,6 +61,10 @@ public class RobotContainer {
   public static toggleLimelight toggleLimelight = new toggleLimelight();
   public static ampAssistControl ampAssistControl = new ampAssistControl();
   public static ampControl ampControl = new ampControl();
+  public static seekingPieces seekingPieces = new seekingPieces();
+  public static automatedIntake automatedIntake = new automatedIntake();
+  public static automatedShooting automatedShooting = new automatedShooting();
+  //public static TeleopSwerve teleopSwerve = new TeleopSwerve(null, null, null, null, null);
 
   //april tag commands//
   public static frc.robot.commands.limelightCommands.limelightAutoCommands.amp amp = new frc.robot.commands.limelightCommands.limelightAutoCommands.amp();
@@ -91,7 +101,10 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     //auto commands//
-
+ 
+    NamedCommands.registerCommand("seekPiece", new seekingPieces());
+    NamedCommands.registerCommand("speakerFinder", new speakerFinder());
+    
     s_Swerve.setDefaultCommand(
         new TeleopSwerve(
             s_Swerve,
@@ -126,6 +139,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return new PathPlannerAuto("testAuto");
+    //return null;
   }
 
 }

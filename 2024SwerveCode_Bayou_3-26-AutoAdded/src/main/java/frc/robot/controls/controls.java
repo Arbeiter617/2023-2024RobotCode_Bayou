@@ -34,8 +34,8 @@ public class controls extends Command {
         public static int barPOVDown = 180;
 
         //automated button commands//
-        public static int automatedShootingButton;
-        public static int automatedIntakeButton;
+        public static int automatedShootingButton = 2;
+        public static int automatedIntakeButton = 4;
 
 
      public controls() {

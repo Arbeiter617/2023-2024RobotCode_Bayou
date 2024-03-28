@@ -5,6 +5,7 @@ package frc.robot.subsystems;
 import frc.robot.subsystems.SwerveModule;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
+import frc.robot.autoCommands.seekingPieces;
 import frc.robot.controls.controls;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -60,6 +61,7 @@ public class Swerve extends SubsystemBase {
 
         swerveOdometry = new SwerveDriveOdometry(Constants.Swerve.swerveKinematics, getGyroYaw(), getModulePositions());
 
+        //only auto//
         AutoBuilder.configureHolonomic(
             this::getPose, // Robot pose supplier
             this::setPose, // Method to reset odometry (will be called if your auto has a starting pose)
@@ -85,6 +87,7 @@ public class Swerve extends SubsystemBase {
             },
             this // Reference to this subsystem to set requirements
     );
+        
     }
 
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop) {
@@ -108,11 +111,11 @@ public class Swerve extends SubsystemBase {
         }
     }
     
+    //only auto//
     public void driveRobotRelative(ChassisSpeeds chassisSpeeds) {
         SwerveModuleState[] swerveModuleStates =
             Constants.Swerve.swerveKinematics.toSwerveModuleStates(
-                chassisSpeeds
-                                );
+chassisSpeeds);
         SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, Constants.Swerve.maxSpeed);
 
         for(SwerveModule mod : mSwerveMods){
