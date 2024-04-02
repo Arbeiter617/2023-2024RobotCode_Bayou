@@ -1,0 +1,125 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 15.152486244822112,
+      "y": 2.6541334285676093
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeDown"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "seekPiece"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Copy of 1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "shooterActuator"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "speakerFinder"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Copy of Copy of 1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeDown"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "seekPiece"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Copy of Copy of Copy of 1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "shooterActuator"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "speakerFinder"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "seekPieceEnd"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
