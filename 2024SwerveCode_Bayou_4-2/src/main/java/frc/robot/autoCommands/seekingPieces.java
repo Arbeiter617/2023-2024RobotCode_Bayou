@@ -64,7 +64,6 @@ public class seekingPieces extends Command {
             rotationAligned = false;
             transAligned = false;
             stop = false;
-            System.out.println("RESET");
         }
 
         shooterActuator.runActuator(.5);

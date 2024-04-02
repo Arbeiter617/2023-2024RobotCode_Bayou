@@ -26,6 +26,7 @@ public final class Constants {
   public static CANSparkMax climberRight = new CANSparkMax(56, CANSparkLowLevel.MotorType.kBrushless);
   public static CANSparkMax ampAssist = new CANSparkMax(57, CANSparkLowLevel.MotorType.kBrushless);
 
+
   public static final class Swerve {
     public static final double stickDeadband = 0.1;
     public static final int pigeonIDShooter = 60;

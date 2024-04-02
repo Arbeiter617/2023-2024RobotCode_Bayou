@@ -51,7 +51,6 @@ public class seekingPiecesEnd extends Command {
    
      @Override
      public void execute() {
-        TeleopSwerve.getYaw();
         isAutoMove = true;
         TeleopSwerve.calledDuringAutotest();
 
@@ -63,7 +62,6 @@ public class seekingPiecesEnd extends Command {
             resetEncoder = true;
             rotationAligned = false;
             transAligned = false;
-            stop = false;
             System.out.println("RESET ALL BOOLEANS");
         }
 
@@ -71,40 +69,33 @@ public class seekingPiecesEnd extends Command {
 
         System.out.println(TeleopSwerve.yawValue);
         //reset rotation//
-
-   
             if(limelightReadingTool.xValuePD > (neededXValue + xOffset) && !colorSensorRun.pieceIsFound) {
-                //move left//
-                strafeDouble = -alignSpeed;
-                //rotationDouble = .15;
-                //rotationDouble = -alignSpeed;
+                //turn left//
+                rotationDouble = alignSpeed;
             } else if(limelightReadingTool.xValuePD < (neededXValue - xOffset) && !colorSensorRun.pieceIsFound) {
-                //move right//
-                strafeDouble = alignSpeed;
-                //rotationDouble = -.15;
-                //rotationDouble = alignSpeed;
+                //turn right//
+                rotationDouble = -alignSpeed;
             } else {
                 //stop//
-                strafeDouble = 0;
+                rotationDouble = 0;
                 //rotationDouble = 0;
                 rotationAligned = true;
-           
+
+                //zero gyro//
+                TeleopSwerve.zeroAutoGyro();
             }
         
         //check for piece//
-        if(colorSensorRun.pieceIsFound) {
+        if(!colorSensorRun.pieceIsFound && rotationAligned) {
+            //move forward//
+            intakeIntake.runIntakeSpeed(1);     
+            transDouble = .35;
+        } if(colorSensorRun.pieceIsFound) {
             intakeIntake.runIntakeSpeed(0);
             //intake up//
             automatedIntake.intakeUpCommand();
             transDouble = 0;
             transAligned = true;
-            resetEncoder = false;
-        }
-
-        if(!colorSensorRun.pieceIsFound && rotationAligned) {
-            //move forward//
-            intakeIntake.runIntakeSpeed(1);     
-            transDouble = .35;
         } else {
             transDouble = 0;
         }

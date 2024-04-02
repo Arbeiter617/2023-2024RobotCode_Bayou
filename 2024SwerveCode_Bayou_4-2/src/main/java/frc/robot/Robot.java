@@ -42,6 +42,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    //current limits//
+    Constants.wenchMotor.setSmartCurrentLimit(80);
+    Constants.ampAssist.setSmartCurrentLimit(80);
+    Constants.climberLeft.setSmartCurrentLimit(80);
+    Constants.climberRight.setSmartCurrentLimit(80);
+    Constants.intakeMotorUp.setSmartCurrentLimit(80);
+    Constants.intakeMotorIn.setSmartCurrentLimit(80);
+
     ctreConfigs = new CTREConfigs();
     m_robotContainer = new RobotContainer();
 

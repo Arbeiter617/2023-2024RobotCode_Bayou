@@ -110,6 +110,12 @@
           "data": {
             "name": "speakerFinder"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "seekPieceEnd"
+          }
         }
       ]
     }
