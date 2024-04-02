@@ -8,6 +8,7 @@ import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.autoCommands.seekingPieces;
 import frc.robot.autoCommands.speakerFinder;
+import frc.robot.autoCommands.zeroGyro;
 import frc.robot.commands.limelightCommands.pieceDetectionStuff;
 import frc.robot.subsystems.Swerve;
 import java.util.function.BooleanSupplier;
@@ -31,6 +32,8 @@ public class TeleopSwerve extends Command {
   public static double movementSpeedAutoTransform;
   public static double movementSpeedAutoRotation;
   public static double movementSpeedAutoStrafe;
+
+  public static double yawValue;
 
   public TeleopSwerve(
       Swerve s_Swerve,
@@ -122,6 +125,7 @@ public class TeleopSwerve extends Command {
     public static void saveGyroData() {
       seekingPieces.savedGyroYaw = Swerve.yaw;
       System.out.println("Saved gyro angle " + seekingPieces.savedGyroYaw);
+      //seekingPieces.transAligned = true;
     }
 
     public static void saveGyroTeleop() {
@@ -133,11 +137,16 @@ public class TeleopSwerve extends Command {
       Swerve.yaw = seekingPieces.savedGyroYaw;
       //System.out.println("GYRO RESET!");
       System.out.println(Swerve.yaw);
+      zeroGyro.reset = true;
     }
 
     public static void resetGyroTeleop() {
       Swerve.yaw = pieceDetectionStuff.value;
       System.out.println("GYRO RESET!");
       System.out.println(Swerve.yaw);
+    }
+
+    public static void getYaw() {
+      yawValue = Swerve.yaw;
     }
 }

@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.commands.limelightCommands.limelightAutoCommands.speaker;
+import frc.robot.commands.shooterCommands.shooterShoot;
 import frc.robot.controls.controls;
 import frc.robot.controls.gunControls;
 
@@ -42,5 +43,7 @@ public class toggleLimelight extends Command {
       readAprilTags.isSpeaker = false;
       readAprilTags.isStage = false;
       speaker.timeSet = false;
+      //turn off shooter//
+      shooterShoot.stopShooter();
     }
 }

@@ -18,7 +18,7 @@ public class colorSensorRun extends Command {
    
      @Override
      public void execute() {
-      if (colorSensor.m_colorSensor.getProximity() > 100){
+      if (colorSensor.m_colorSensor.getProximity() > 90){
          pieceIsFound = true;
          RobotContainer.driver.setRumble(RumbleType.kBothRumble, 1);
       }

@@ -17,7 +17,7 @@ import frc.robot.commands.shooterCommands.shooterActuator;
 import frc.robot.commands.shooterCommands.shooterShoot;
 import frc.robot.subsystems.Swerve;
 
-public class speakerFinder extends Command {
+public class speakerFinderEnd extends Command {
     double neededXValue = 0;
     double neededXValue2 = 5;
     double neededYValue = -22;
@@ -35,13 +35,13 @@ public class speakerFinder extends Command {
 
     public static boolean xAligned = false;
     public static boolean pieceShot = false;
-    static boolean setTime = false;
+    public static boolean setTime = false;
     double time;
     public static boolean stop = false;
 
     int yawOffset = 2;
 
-     public speakerFinder() {
+     public speakerFinderEnd() {
         this.s_Swerve = s_Swerve;
      }
    
@@ -100,10 +100,8 @@ public class speakerFinder extends Command {
                 time = System.currentTimeMillis();
                 setTime = true;
             }
-            if(System.currentTimeMillis() > time + 500) {
+            if(System.currentTimeMillis() > time + 1500) {
                 
-            intakeIntake.stopintakeSpeed();
-            shooterShoot.stopShooter();
             pieceShot = true;
             }
             

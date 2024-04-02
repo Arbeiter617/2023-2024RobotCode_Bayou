@@ -11,8 +11,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autoCommands.autoCommandsToRun;
+import frc.robot.autoCommands.intakeDown;
+import frc.robot.autoCommands.intakeUp;
 import frc.robot.autoCommands.seekingPieces;
+import frc.robot.autoCommands.seekingPiecesEnd;
+import frc.robot.autoCommands.shooterActuatorA;
 import frc.robot.autoCommands.speakerFinder;
+import frc.robot.autoCommands.speakerFinderEnd;
 import frc.robot.autoCommands.zeroGyro;
 import frc.robot.commands.*;
 import frc.robot.commands.ampBarCommands.ampAssistControl;
@@ -101,8 +106,14 @@ public class RobotContainer {
     //auto commands//
  
     NamedCommands.registerCommand("seekPiece", new seekingPieces());
+    NamedCommands.registerCommand("seekPieceEnd", new seekingPiecesEnd());
     NamedCommands.registerCommand("speakerFinder", new speakerFinder());
+    NamedCommands.registerCommand("speakerFinderEnd", new speakerFinderEnd());
     NamedCommands.registerCommand("zeroGyro", new zeroGyro());
+    NamedCommands.registerCommand("shooterActuatorUp", new shooterActuatorA(true));
+    NamedCommands.registerCommand("shooterActuatorDown", new shooterActuatorA(false));
+    NamedCommands.registerCommand("intakeDown", new intakeDown());
+    NamedCommands.registerCommand("intakeUp", new intakeUp());
     
     s_Swerve.setDefaultCommand(
         new TeleopSwerve(
@@ -134,7 +145,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new PathPlannerAuto("testAuto");
+    return new PathPlannerAuto("auto");
     //return null;
   }
 

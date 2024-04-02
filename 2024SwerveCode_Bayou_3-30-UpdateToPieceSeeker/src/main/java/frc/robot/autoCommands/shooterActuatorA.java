@@ -1,4 +1,4 @@
-package frc.robot.commands.shooterCommands;
+package frc.robot.autoCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
@@ -8,7 +8,7 @@ import frc.robot.controls.gunControls;
 import frc.robot.subsystems.shooterPigeon;
 
 
-public class shooterActuator extends Command {
+public class shooterActuatorA extends Command {
     /*Calling Subsystems */
     shooterPigeon s_shooterPigeon;
     private shooterPigeon s_ShooterPigeon;
@@ -20,10 +20,12 @@ public class shooterActuator extends Command {
     double actuatorSpeed = 1;
 
     /*Booleans */
-    public static boolean canManuallyMove = true;
+    public static boolean isDown = true;
+    boolean direction;
 
-     public shooterActuator() {
+     public shooterActuatorA(boolean direction) {
         this.s_shooterPigeon = s_shooterPigeon;
+        this.direction = direction;
      }
    
      @Override
@@ -31,23 +33,25 @@ public class shooterActuator extends Command {
    
      @Override
      public void execute() {
-        if(canManuallyMove) {
-            if(RobotContainer.copilot_flightStick.getRawAxis(gunControls.shooterActuatorAxis) > 0.0 + offsetVal && shooterPigeon.roll < highestShooterPoint) {
+            if(shooterPigeon.roll < highestShooterPoint && direction) {
                 //go up//\
                     //safety//
+                    System.out.println("UP");
+                    isDown = false;
                     runActuator(-actuatorSpeed);
                 
-            } else if(RobotContainer.copilot_flightStick.getRawAxis(gunControls.shooterActuatorAxis) < 0.0 - offsetVal) {
+            } else if(shooterPigeon.roll > lowestShooterPoint && !direction) {
                 //go down//
                     //safety//
-                    System.out.println("Down");
+                    System.out.println("DOWN");
+                    isDown = false;
                     runActuator(actuatorSpeed);
                 
             } else {
                 //stop//
                 stopActuator();
+                isDown = true;
             }
-        }
 
     }
 
@@ -57,5 +61,13 @@ public class shooterActuator extends Command {
 
     public static void stopActuator() {
         Constants.wenchMotor.set(0);
+    }
+
+    public boolean isFinished() {
+        return isDown;
+    }
+
+    public void end() {
+
     }
 }

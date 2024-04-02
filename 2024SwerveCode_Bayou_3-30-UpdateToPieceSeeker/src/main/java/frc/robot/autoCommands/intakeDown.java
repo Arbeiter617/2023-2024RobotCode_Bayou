@@ -10,42 +10,38 @@ import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.commands.automatedCommands.automatedIntake;
+import frc.robot.commands.intakeCommands.intakeChain;
 import frc.robot.commands.intakeCommands.intakeIntake;
 import frc.robot.commands.limelightCommands.limelightReadingTool;
+import frc.robot.commands.limelightCommands.limelightAutoCommands.speaker;
 import frc.robot.commands.sensorCommands.colorSensorRun;
 import frc.robot.commands.shooterCommands.shooterActuator;
-import frc.robot.commands.shooterCommands.shooterShoot;
 import frc.robot.subsystems.Swerve;
 
-public class zeroGyro extends Command {
-    public static double newGyroVal;
-    public static boolean reset = false;
-     public zeroGyro() {
+public class intakeDown extends Command {
+    boolean intakeDown = false;
+     public intakeDown() {
+       
      }
    
      @Override
-     public void initialize() {}
+     public void initialize() {
+     }
    
      @Override
      public void execute() {
-        if(seekingPieces.savedGyroYaw > 180) {
-            //turned left//
-            System.out.println("LEFT");
-            TeleopSwerve.resetGyro();
-        } else if(seekingPieces.savedGyroYaw < 180) {
-            System.out.println("RIGHT");
-            TeleopSwerve.resetGyro();
-            //turned right//
+        System.out.println(intakeChain.encoderVal + " : " + intakeChain.lowestIntakePoint);
+        if(intakeChain.encoderVal > -6) {
+            intakeDown = false;
+            intakeChain.runIntake(-.25);
         } else {
-            System.out.println("ERROR");
-            reset = false;
-            return;
+            intakeDown = true;
+            intakeChain.stopIntake();
         }
-        
     }
-
+    
     public boolean isFinished() {
-        return reset;
+        return intakeDown;
     }
 
     public void end() {

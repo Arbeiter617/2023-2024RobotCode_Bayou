@@ -10,42 +10,45 @@ import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.commands.automatedCommands.automatedIntake;
+import frc.robot.commands.intakeCommands.intakeChain;
 import frc.robot.commands.intakeCommands.intakeIntake;
 import frc.robot.commands.limelightCommands.limelightReadingTool;
+import frc.robot.commands.limelightCommands.limelightAutoCommands.speaker;
 import frc.robot.commands.sensorCommands.colorSensorRun;
 import frc.robot.commands.shooterCommands.shooterActuator;
-import frc.robot.commands.shooterCommands.shooterShoot;
 import frc.robot.subsystems.Swerve;
 
-public class zeroGyro extends Command {
-    public static double newGyroVal;
-    public static boolean reset = false;
-     public zeroGyro() {
+public class intakeUp extends Command {
+    boolean intakeUp = false;
+     public intakeUp() {
+       
      }
    
      @Override
-     public void initialize() {}
+     public void initialize() {
+     }
    
      @Override
      public void execute() {
-        if(seekingPieces.savedGyroYaw > 180) {
-            //turned left//
-            System.out.println("LEFT");
-            TeleopSwerve.resetGyro();
-        } else if(seekingPieces.savedGyroYaw < 180) {
-            System.out.println("RIGHT");
-            TeleopSwerve.resetGyro();
-            //turned right//
+        if(intakeChain.encoderVal < intakeChain.highestIntakePoint) {
+            intakeUp = false;
+            System.out.println("GOING UP");
+            if(intakeChain.encoderVal > -10) {
+                intakeChain.runIntake((intakeChain.upSpeed) / 2);
+            } else {
+                intakeChain.runIntake(intakeChain.upSpeed);
+            }
         } else {
-            System.out.println("ERROR");
-            reset = false;
-            return;
+            //at highest point... turn off command//
+            intakeChain.stopIntake();
+            //Constants.intakeMotorUp.getEncoder().setPosition(0);
+            intakeUp = true;
+            System.out.println("UP");
         }
-        
     }
-
+    
     public boolean isFinished() {
-        return reset;
+        return intakeUp;
     }
 
     public void end() {

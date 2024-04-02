@@ -19,7 +19,7 @@ public class intakeChain extends Command {
     public static double highestIntakePoint = 0;
     public static double lowestIntakePoint = -4;
     public static double upSpeed = .35;
-    public static double downSpeed =-.35;
+    public static double downSpeed =-.45;
 
     /*Encoder Val */
     public static double encoderVal;

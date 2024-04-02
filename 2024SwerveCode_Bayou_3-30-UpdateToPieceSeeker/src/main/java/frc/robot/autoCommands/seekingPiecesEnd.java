@@ -18,7 +18,7 @@ import frc.robot.commands.sensorCommands.colorSensorRun;
 import frc.robot.commands.shooterCommands.shooterActuator;
 import frc.robot.subsystems.Swerve;
 
-public class seekingPieces extends Command {
+public class seekingPiecesEnd extends Command {
     double neededXValue = 0;
     double xOffset = 3;
     double alignSpeed = .25;
@@ -41,7 +41,7 @@ public class seekingPieces extends Command {
     int yawOffset = 2;
     boolean stop = false;
 
-     public seekingPieces() {
+     public seekingPiecesEnd() {
         this.s_Swerve = s_Swerve;
      }
    
@@ -56,7 +56,6 @@ public class seekingPieces extends Command {
         TeleopSwerve.calledDuringAutotest();
 
         if(!resetEncoder) {
-            speakerFinder.setTime = false;
             speakerFinder.xAligned = false;
             speakerFinder.stop = false;
             speakerFinder.pieceShot = false;
@@ -71,20 +70,8 @@ public class seekingPieces extends Command {
 
         System.out.println(TeleopSwerve.yawValue);
         //reset rotation//
-        if(TeleopSwerve.yawValue > 180 + yawOffset && !stop) {
-            //left//
-            rotationDouble = -.4;
-            stop = false;
-        } else if(TeleopSwerve.yawValue < 180 - yawOffset && !stop) {
-            //right//
-            rotationDouble = .4;
-            stop = false;
-        } else {
-            rotationDouble = 0;
-            stop = true;
-        }
 
-        if(stop) {
+   
             if(limelightReadingTool.xValuePD > (neededXValue + xOffset) && !colorSensorRun.pieceIsFound) {
                 //move left//
                 strafeDouble = -alignSpeed;
@@ -102,7 +89,7 @@ public class seekingPieces extends Command {
                 rotationAligned = true;
            
             }
-        }
+        
         //check for piece//
         if(colorSensorRun.pieceIsFound) {
             intakeIntake.runIntakeSpeed(0);
