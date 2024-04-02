@@ -1,0 +1,16 @@
+3/16/2024
+REVAMPED CODE
+Iteration: v15.0.1
+
+Newest additions and features:
+    -using "kBothRumble" rumble type
+	-brings up intake (manual and auto)
+	-limelight edits, including auto down movement when its not seeing ANY tag
+	-fixed autos with NO rotation
+	-new straight auto with shoot and back up
+    -some simple edits to coprocessing code
+
+Bug Fixes:
+    -Climber not coexisting with drive
+    -Glitching/lagging
+    -intake offset glitch
